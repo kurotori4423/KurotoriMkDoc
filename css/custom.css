@@ -13,3 +13,19 @@ body {
   .wy-menu-vertical span {
     color: #ff0;
   }
+
+
+.md-typeset h1 {
+  font-weight: bold;
+  color : #0d4091;
+  border-bottom: solid 2px #0d4091;
+  padding-bottom: 5px;
+}
+.md-typeset h2 {
+  font-weight: bold;
+  border-bottom: solid 1px #000000;
+}
+.md-typeset h3 {
+  font-weight: bold;
+  border-bottom: 1px dotted #888;
+}
