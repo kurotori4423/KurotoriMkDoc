@@ -438,6 +438,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#houdini-vex" class="md-nav__link">
+    Houdini Vex言語に対応する
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -467,6 +474,18 @@
   <li class="md-nav__item">
     <a href="../MkDocsセットアップ/" title="MkDocs基本" class="md-nav__link">
       MkDocs基本
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../カスタマイズ/" title="MkDocsカスタマイズ" class="md-nav__link">
+      MkDocsカスタマイズ
     </a>
   </li>
 
@@ -589,6 +608,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#houdini-vex" class="md-nav__link">
+    Houdini Vex言語に対応する
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -624,50 +650,73 @@
 <h3 id="_1">導入方法</h3>
 <p><code>mkdocs.yml</code>内で<code>markdown_extensions:</code>に拡張機能の名前を追加する。</p>
 <p>例：Attribute Listsの場合</p>
-<div class="codehilite"><pre><span></span><span class="c">markdown_extensions:</span>
-<span class="c">    - attr_list</span>
-<span class="c">    - 拡張機能名</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">attr_list</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">拡張機能名</span>
 </pre></div>
-
+</td></tr></table>
 
 <h3 id="attribute-lists">Attribute Lists</h3>
 <p>生成されるHTMLの要素に任意の属性を追加することができる拡張機能。例えば見出しに対してid属性を指定したい場合次のように書く</p>
-<div class="codehilite"><pre><span></span><span class="err">### カスタムクエリ {: #Custom-queries}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">### カスタムクエリ {: #Custom-queries}</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>すると以下のようなHTMLが生成される</p>
-<div class="codehilite"><pre><span></span><span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">&quot;Custom-queries&quot;</span><span class="nt">&gt;</span>カスタムクエリ<span class="nt">&lt;/h3&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">&quot;Custom-queries&quot;</span><span class="nt">&gt;</span>カスタムクエリ<span class="nt">&lt;/h3&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <h3 id="attribute-lists_1">Attribute Listsを使用した画像の中心揃え</h3>
 <p><code>extra_css</code>に以下のタグを追加する</p>
-<div class="codehilite"><pre><span></span><span class="p">.</span><span class="nc">center</span> <span class="p">{</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">.</span><span class="nc">center</span> <span class="p">{</span>
   <span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span> <span class="c">/*ブロック要素にする*/</span>
   <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/*中心揃え*/</span>
 <span class="p">}</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>画像を中心揃えで挿入する</p>
-<div class="codehilite"><pre><span></span>![<span class="nt">image</span>](<span class="na">image.png</span>){: .center}
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>![<span class="nt">image</span>](<span class="na">image.png</span>){: .center}
 </pre></div>
-
+</td></tr></table>
 
 <h2 id="_2">サードパーティー拡張機能</h2>
 <h3 id="codehilite">CodeHilite</h3>
 <p>コードをハイライトする。300言語対応している。<br />
 <a href="https://squidfunk.github.io/mkdocs-material/extensions/codehilite/">https://squidfunk.github.io/mkdocs-material/extensions/codehilite/</a></p>
 <h4 id="_3">インストール</h4>
-<div class="codehilite"><pre><span></span><span class="err">pip install pygments</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">pip install pygments</span>
 </pre></div>
-
+</td></tr></table>
 
 <p><code>mkdocs.yml</code>に以下を追加</p>
-<div class="codehilite"><pre><span></span><span class="c">markdown_extensions:</span>
-<span class="c">    - codehilite</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">codehilite</span>
 </pre></div>
+</td></tr></table>
+
+<p>行番号を追加する場合</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">markdown_extensions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">codehilite</span><span class="p">:</span>
+        <span class="nt">linenums</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</td></tr></table>
+
+<h4 id="houdini-vex">Houdini Vex言語に対応する</h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">pip install houdini-lexers</span>
+</pre></div>
+</td></tr></table>
+
+<p>でインストールする。コードブロックで<code>vex</code>を指定することによってvexのハイライトが可能。</p>
                 
                   
                 
@@ -757,6 +806,8 @@
         
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../javascripts/extra.js"></script>
       
     
   </body>
