@@ -1,0 +1,752 @@
+
+
+
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="クリップボードへコピー">
+      
+        <meta name="lang:clipboard.copied" content="コピーしました">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="何も見つかりませんでした">
+      
+        <meta name="lang:search.result.one" content="1件見つかりました">
+      
+        <meta name="lang:search.result.other" content="#件見つかりました">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.1">
+    
+    
+      
+        <title>VEXで谷折りエッジを検出しグループ化する - 黒鳥のメモ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjp.css">
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:600,800">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#vex" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="黒鳥のメモ" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              黒鳥のメモ
+            </span>
+            <span class="md-header-nav__topic">
+              
+                VEXで谷折りエッジを検出しグループ化する
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            検索キーワードを入力してください
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="黒鳥のメモ" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    黒鳥のメモ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="黒鳥のメモ" class="md-nav__link">
+      黒鳥のメモ
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Zbrush/" title="ZBrush" class="md-nav__link">
+      ZBrush
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../小技集/" title="小技集" class="md-nav__link">
+      小技集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Houdini
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Houdini
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        VEXで谷折りエッジを検出しグループ化する
+      </label>
+    
+    <a href="./" title="VEXで谷折りエッジを検出しグループ化する" class="md-nav__link md-nav__link--active">
+      VEXで谷折りエッジを検出しグループ化する
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    やりたいこと
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    優角、劣角
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    判定方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基本方針
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ノード構成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    サンプル
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Lavender VR
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Lavender VR
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Lavender VR/QA/" title="トラブルシューティング" class="md-nav__link">
+      トラブルシューティング
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Markdown
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Markdown
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Markdown/Visual Studio Code を Markdown用にカスタムする/" title="Visual Studio Code を Markdown用にカスタムする" class="md-nav__link">
+      Visual Studio Code を Markdown用にカスタムする
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Markdown/ドキュメント化に便利なソフト/" title="ドキュメント作成に便利なソフト" class="md-nav__link">
+      ドキュメント作成に便利なソフト
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      MkDocs解説
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        MkDocs解説
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../MkDocs解説/Extension/" title="MkDocs拡張機能" class="md-nav__link">
+      MkDocs拡張機能
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../MkDocs解説/MkDocsセットアップ/" title="MkDocs基本" class="md-nav__link">
+      MkDocs基本
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      勉強
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        勉強
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../勉強/math/" title="Math" class="md-nav__link">
+      Math
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    やりたいこと
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    優角、劣角
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    判定方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    基本方針
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ノード構成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    サンプル
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="vex">VEXで谷折りエッジを検出しグループ化する</h1>
+<h2 id="_1">やりたいこと</h2>
+<p>谷折り部分のエッジだけを検出したいが、<code>Group Create</code>の<code>Include by Edges</code>では山折り谷折り関係なしに検出してしまうし、低ポリゴンだと<code>Measure</code>ノードの<code>Curvature</code>モードが上手く働かないのでVEXを使用して谷折りエッジのみを検出する仕組みを作成した。</p>
+<p><img alt="image" class="center" src="../2019-12-25-17-08-13.png" /><br />
+<div style="text-align: center;">45度以上の谷折りエッジを選択</div></p>
+<h2 id="_2">優角、劣角</h2>
+<p>優角は180°以上、360°以下の角のことで、劣角は0°以上180°以下の角のことをいう。
+優角にはreflex angleという英語訳があるが、劣角には対訳がない。</p>
+<h2 id="_3">判定方法</h2>
+<p>面法線とTangentを使用して判定する。
+重要なのはTangentの向きを揃えること。そこで共有する辺のベクトルをBinormalとして、Tangentを求める。</p>
+<p>Houdiniは右手座標系なので、辺は時計回りで順番になる。特定の辺に向かうTangentベクトルを求めるには、Normal×Binormalの順番で外積すれば良い。</p>
+<p>プライマリプリミティブのNormalとセカンダリプリミティブのTangentを内積すると、0以上の場合優角、0以下の場合劣角となる。</p>
+<h2 id="_4">基本方針</h2>
+<ol>
+<li>プリミティブからプリミティブを構成するハーフエッジのリストを取得する</li>
+<li>ハーフエッジから同等のハーフエッジを検索し、それを含むプリミティブを見つける</li>
+<li>プリミティブ同士のNormalとTangentを内積する。</li>
+<li>一定角以上の辺をグループ化する。</li>
+</ol>
+<h2 id="_5">ノード構成</h2>
+<p>3角形ポリゴンかつ、フラットシェーディングであることが前提。Threshold(0-1)で設定した角度以下の谷折りエッジを、Nameで指定した名前をEdgeグループ化する。</p>
+<p><img alt="image" class="center" src="../2019-12-24-18-58-29.png" />  </p>
+<div class="codehilite"><pre><span></span><span class="c1">// プリミティブに含まれる最初のハーフエッジを見つける</span>
+<span class="kt">int</span> <span class="n">f_hedge</span> <span class="o">=</span> <span class="n">primhedge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="err">@</span><span class="n">primnum</span><span class="p">);</span>
+<span class="n">vector</span> <span class="n">N</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">vertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="n">vertexindex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="err">@</span><span class="n">primnum</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="n">vertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="n">vertexindex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="err">@</span><span class="n">primnum</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="n">vertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="n">vertexindex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="err">@</span><span class="n">primnum</span><span class="p">,</span><span class="mi">0</span><span class="p">)));</span>
+<span class="kt">int</span> <span class="n">hedge</span> <span class="o">=</span> <span class="n">f_hedge</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="n">hedge</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">hedge</span> <span class="o">==</span> <span class="n">f_hedge</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ハーフエッジかどうか</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">hedge_isvalid</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hedge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">hedge</span> <span class="o">=</span> <span class="n">hedge_next</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">hedge</span><span class="p">);</span>
+        <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// プライマリハーフエッジかどうか</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">hedge_isprimary</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hedge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">hedge</span> <span class="o">=</span> <span class="n">hedge_next</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">hedge</span><span class="p">);</span>
+        <span class="o">++</span><span class="n">i</span><span class="p">;</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">hedgeNum</span> <span class="o">=</span> <span class="n">hedge_equivcount</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hedge</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">other_hedge</span> <span class="o">=</span> <span class="n">hedge_nextequiv</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">hedge</span><span class="p">);</span> <span class="c1">// プライマリハーフエッジに対して同等なもう一方のハーフエッジを取得する</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">hedgeNum</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="o">++</span><span class="n">k</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 共有する辺からBinormalを計算する</span>
+        <span class="n">vector</span> <span class="n">binormal</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s">&quot;P&quot;</span><span class="p">,</span> <span class="n">hedge_srcpoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">other_hedge</span><span class="p">))</span> <span class="o">-</span> <span class="n">point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s">&quot;P&quot;</span><span class="p">,</span> <span class="n">hedge_dstpoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">other_hedge</span><span class="p">)));</span>
+
+        <span class="c1">// もう一方の面の法線を求める。</span>
+        <span class="kt">int</span> <span class="n">other_prim</span> <span class="o">=</span> <span class="n">hedge_prim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">other_hedge</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">other_vertex</span> <span class="o">=</span> <span class="n">vertexindex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">other_prim</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">other_vertex2</span> <span class="o">=</span> <span class="n">vertexindex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">other_prim</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">other_vertex3</span> <span class="o">=</span> <span class="n">vertexindex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">other_prim</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+
+
+        <span class="n">vector</span> <span class="n">otherN</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">vertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="n">other_vertex</span><span class="p">)</span> <span class="o">+</span> <span class="n">vertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="n">other_vertex2</span><span class="p">)</span> <span class="o">+</span> <span class="n">vertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="n">other_vertex3</span><span class="p">));</span>
+
+        <span class="c1">// normal x binromal の順番で外積</span>
+        <span class="n">vector</span> <span class="n">otherT</span> <span class="o">=</span> <span class="n">cross</span><span class="p">(</span><span class="n">otherN</span><span class="p">,</span> <span class="n">binormal</span><span class="p">);</span>
+
+        <span class="c1">// プライマリのNormalとセカンダリのTangentを内積</span>
+        <span class="kt">float</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">otherT</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">angle</span> <span class="o">&gt;</span> <span class="n">ch</span><span class="p">(</span><span class="s">&quot;threshold&quot;</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">setedgegroup</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">chs</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">),</span> <span class="n">hedge_srcpoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">hedge</span><span class="p">),</span> <span class="n">hedge_dstpoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">hedge</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">other_hedge</span> <span class="o">=</span> <span class="n">hedge_nextequiv</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">other_hedge</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">hedge</span> <span class="o">=</span> <span class="n">hedge_next</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">hedge</span><span class="p">);</span>
+    <span class="o">++</span><span class="n">i</span><span class="p">;</span>   
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="_6">サンプル</h2>
+<p>Houdini Indie Limited-Commercial 18.9.287で作成<br />
+<a href="https://drive.google.com/open?id=1Uk7js0_nCpVRdqj2GgoR8JmvQzWScT6x">detectCurvatureEdge.hiplc</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../小技集/" title="小技集" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前
+                </span>
+                小技集
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../Lavender VR/QA/" title="トラブルシューティング" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  次
+                </span>
+                トラブルシューティング
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.8e03edeb.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

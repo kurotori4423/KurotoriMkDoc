@@ -178,8 +178,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Welcome to MkDocs" class="md-nav__link">
-      Welcome to MkDocs
+    <a href="../.." title="黒鳥のメモ" class="md-nav__link">
+      黒鳥のメモ
     </a>
   </li>
 
@@ -190,8 +190,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../テスト/" title="テスト" class="md-nav__link">
-      テスト
+    <a href="../../Zbrush/" title="ZBrush" class="md-nav__link">
+      ZBrush
     </a>
   </li>
 
@@ -218,11 +218,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
-      Google App Script
+      Houdini
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
-        Google App Script
+        Houdini
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -233,8 +233,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Google App Script/twitterapi/" title="GASでTwitter APIを使用する(書きかけ)" class="md-nav__link">
-      GASでTwitter APIを使用する(書きかけ)
+    <a href="../../Houdini/cuvatureEdgeDetect/" title="VEXで谷折りエッジを検出しグループ化する" class="md-nav__link">
+      VEXで谷折りエッジを検出しグループ化する
     </a>
   </li>
 
@@ -254,10 +254,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
-      Markdown
+      Lavender VR
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
+        Lavender VR
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../Lavender VR/QA/" title="トラブルシューティング" class="md-nav__link">
+      トラブルシューティング
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Markdown
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
         Markdown
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -301,17 +337,29 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       MkDocs解説
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         MkDocs解説
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Extension/" title="MkDocs拡張機能" class="md-nav__link">
+      MkDocs拡張機能
+    </a>
+  </li>
+
         
           
           
@@ -396,6 +444,42 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      勉強
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        勉強
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../勉強/math/" title="Math" class="md-nav__link">
+      Math
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -471,20 +555,23 @@
                 <h1 id="mkdocs">MkDocs基本</h1>
 <h2 id="_1">ビルド</h2>
 <p>プロジェクトのディレクトリで</p>
-<pre><code>mkdocs build
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="err">mkdocs build</span>
+</pre></div>
+
 
 <h2 id="_2">ローカルサーバーで確認</h2>
 <p>プロジェクトのディレクトリで</p>
-<pre><code>mkdocs serve
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="err">mkdocs serve</span>
+</pre></div>
+
 
 <p>サーバー実行中は<strong>ファイルの追加や変更が検出されて自動でビルドされる</strong>。</p>
 <h2 id="_3">ローカルサーバーを終了する</h2>
 <p>起動中のコマンドプロンプトで<code>Ctrl</code>+<code>C</code>する。</p>
 <h2 id="github">GitHubにデプロイ</h2>
-<pre><code>mkdocs gh-deploy
-</code></pre>
+<div class="codehilite"><pre><span></span><span class="err">mkdocs gh-deploy</span>
+</pre></div>
+
 
 <p>実行してからサイトに反映されるまでちょっと時間がかかる。</p>
 <h2 id="_4">参考にしたサイト</h2>
@@ -510,7 +597,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../Markdown/ドキュメント化に便利なソフト/" title="ドキュメント作成に便利なソフト" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Extension/" title="MkDocs拡張機能" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -519,11 +606,25 @@
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                ドキュメント作成に便利なソフト
+                MkDocs拡張機能
               </span>
             </div>
           </a>
         
+        
+          <a href="../../勉強/math/" title="Math" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  次
+                </span>
+                Math
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>

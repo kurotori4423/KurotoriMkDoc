@@ -29,3 +29,8 @@ body {
   font-weight: bold;
   border-bottom: 1px dotted #888;
 }
+
+.center {
+  display: block; /*ブロック要素にする*/
+  margin: 0 auto; /*中心揃え*/
+}
