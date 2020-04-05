@@ -567,6 +567,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#onownershiptransferred" class="md-nav__link">
+    OnOwnershipTransferred()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vrcplayerapi" class="md-nav__link">
+    VRCPlayerAPI同士の比較
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onplayerleft" class="md-nav__link">
+    OnPlayerLeft時に同期変数を更新するときの注意
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     リンク
   </a>
@@ -795,6 +816,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#onownershiptransferred" class="md-nav__link">
+    OnOwnershipTransferred()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vrcplayerapi" class="md-nav__link">
+    VRCPlayerAPI同士の比較
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onplayerleft" class="md-nav__link">
+    OnPlayerLeft時に同期変数を更新するときの注意
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     リンク
   </a>
@@ -844,7 +886,7 @@
 
 <h2 id="takeownership">TakeOwnerShip</h2>
 <p>インタラクトした人にオーナーシップを渡す設定。
-ただし、反映されるのは次のフレームからになる。（近日中に修正されることが予定されている。）</p>
+ただし、反映されるのは次のインタラクション時。（近日中に修正されることが予定されている。）</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1015,6 +1057,7 @@
 </table>
 <h3 id="sendcustomnetworkevent">SendCustomNetworkEvent</h3>
 <p>ネットワーク越しでイベントを発行するのに使えるメソッド、オーナーシップとの兼ね合いはまだよくわからない。</p>
+<p>ここに指定するメソッドはPublicじゃないといけない。</p>
 <p>以下のコードでインタラクト時に、ワールドにいる全員に対してイベントを発火し、ExampleMethodを実行する。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -1089,9 +1132,56 @@
 </pre></div>
 </td></tr></table>
 
+<h2 id="onownershiptransferred">OnOwnershipTransferred()</h2>
+<p>オーナーシップを失う時に、失った人で発火する。
+失った時に発火するため、同期された値を編集することは出来ない。</p>
+<h2 id="vrcplayerapi">VRCPlayerAPI同士の比較</h2>
+<p><code>Networking.GetOwner</code>などで取れるVRCPlayerAPIは比較演算子を使って<code>Networking.LocalPlayer</code>と比較は出来なかった。</p>
+<p>こっちはダメ</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">Networking.LocalPlayer == Networking.GetOwner(playerList.gameObject);</span>
+</pre></div>
+</td></tr></table>
+
+<p>こっちはOK</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">Networking.IsOwner(Networking.LocalPlayer, gameObject);</span>
+</pre></div>
+</td></tr></table>
+
+<p><code>OnPlayerJoin</code>や<code>OnPlayerLeft</code>の引数の<code>player</code>は<code>Networking.LocalPlayer</code>と比較演算子（==）を使用しても正しく比較できるが、きちんと比較したい場合はplayerIDで比較するのがよいかもしれない。</p>
+<h2 id="onplayerleft">OnPlayerLeft時に同期変数を更新するときの注意</h2>
+<p>OnPlayerLeftのタイミングで以下のように同期変数を修正する場合、このオブジェクトのオーナーがワールドから移動する場合は値が更新されない。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">[UdonSynced(UdonSyncMode.None)]</span>
+<span class="na">private int syncValue</span> <span class="o">=</span> <span class="s">0;</span>
+
+<span class="na">public override void OnPlayerLeft(VRCPlayerApi player)</span>
+<span class="na">{</span>
+    <span class="na">if (Networking.IsOwner(Networking.LocalPlayer, gameObject))</span>
+    <span class="na">{</span>
+        <span class="na">syncValue</span> <span class="o">=</span> <span class="s">1;</span>
+<span class="s">    }</span>
+<span class="na">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>オブジェクトのオーナーが落ちるとそのワールドのマスターにオーナー権限が移動するが、<code>Networking.SetOwner</code>と同様にオーナー権限の移動にラグがある。<br />
+憶測だが、オーナー権限移行時にOpPlayerLeftでIf分内が新しいオーナーで動作するが、全体ではまだ新しいオーナーがオーナーではないため、値の同期は走らないのではないかと思われる。
+少なくとも、オーナー権限移動と同期変数の更新は同タイミングで行わないほうがいい。</p>
 <h2 id="_6">リンク</h2>
 <p>Udonの同期のVRChat公式の提言<br />
 <a href="https://ask.vrchat.com/t/how-to-sync-with-udon/449">How to Sync with Udon</a></p>
+<p>はつぇさんのU#に関する記事<br />
+<a href="https://hatuxes.hatenablog.jp/archive/category/Udon">真時代傾向璋</a></p>
+<p>やぎりさんのメモ<br />
+<a href="https://yagiri000.hatenablog.com/entry/2020/04/04/162312">UdonSharp走り書きメモ.cs（執筆中、順次更新）</a></p>
                 
                   
                 
