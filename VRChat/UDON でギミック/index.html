@@ -1157,8 +1157,8 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 <h3 id="_4">同期変数</h3>
 <p>UdonSharpでは以下のように、UdonSynced属性がついた変数のことをいう。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">[UdonSynced(UdonSyncMode.None)]</span>
-<span class="na">public float syncFloatValue</span> <span class="o">=</span> <span class="s">0.0f;</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="na">[UdonSynced(UdonSyncMode.None)]</span>
+<span class="k">public</span> <span class="kt">float</span> <span class="n">syncFloatValue</span> <span class="p">=</span> <span class="m">0.0f</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
 
@@ -1167,9 +1167,9 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 <p>インタラクト時に呼ばれるコールバック関数はこのように定義する。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">public override void Interact()</span>
-<span class="err">{</span>
-<span class="err">}</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Interact</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1182,24 +1182,24 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">public override void Interact()</span>
-<span class="err">{</span>
-<span class="err">    Networking.SetOwner(Networking.LocalPlayer, gameObject);</span>
-<span class="err">}</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Interact</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Networking</span><span class="p">.</span><span class="n">SetOwner</span><span class="p">(</span><span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span><span class="p">,</span> <span class="n">gameObject</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
 <h2 id="networking">Networking</h2>
 <h3 id="getowner">GetOwner</h3>
 <p>そのオブジェクトのSyncOwnerの名前が取れる。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">Networking.GetOwner(gameObject).displayName</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Networking</span><span class="p">.</span><span class="n">GetOwner</span><span class="p">(</span><span class="n">gameObject</span><span class="p">).</span><span class="n">displayName</span>
 </pre></div>
 </td></tr></table>
 
 <h2 id="vrcplayerapi">VRCPlayerApi</h2>
 <h3 id="getplayerbyid">GetPlayerById</h3>
 <p>IDからプレイヤーを取得する。そのIDのプレイヤーがいない場合nullを返す。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">var p = VRCPlayerApi.GetPlayerById(i);</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">var</span> <span class="n">p</span> <span class="p">=</span> <span class="n">VRCPlayerApi</span><span class="p">.</span><span class="n">GetPlayerById</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
@@ -1209,12 +1209,12 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 <h2 id="vrcplayerapi_1">VRCPlayerAPI同士の比較</h2>
 <p><code>Networking.GetOwner</code>などで取れるVRCPlayerAPIは比較演算子を使って<code>Networking.LocalPlayer</code>と比較は出来なかった。</p>
 <p>こっちはダメ</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">Networking.LocalPlayer == Networking.GetOwner(playerList.gameObject);</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span> <span class="p">==</span> <span class="n">Networking</span><span class="p">.</span><span class="n">GetOwner</span><span class="p">(</span><span class="n">playerList</span><span class="p">.</span><span class="n">gameObject</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
 <p>こっちはOK</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">Networking.IsOwner(Networking.LocalPlayer, gameObject);</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Networking</span><span class="p">.</span><span class="n">IsOwner</span><span class="p">(</span><span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span><span class="p">,</span> <span class="n">gameObject</span><span class="p">);</span>
 </pre></div>
 </td></tr></table>
 
@@ -1255,16 +1255,16 @@ OnPreSerializationはマスター側で送り出す前に発生するのが OnPr
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">[UdonSynced(UdonSyncMode.None)]</span>
-<span class="na">private int syncValue</span> <span class="o">=</span> <span class="s">0;</span>
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="na">[UdonSynced(UdonSyncMode.None)]</span>
+<span class="k">private</span> <span class="kt">int</span> <span class="n">syncValue</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
 
-<span class="na">public override void OnPlayerLeft(VRCPlayerApi player)</span>
-<span class="na">{</span>
-    <span class="na">if (Networking.IsOwner(Networking.LocalPlayer, gameObject))</span>
-    <span class="na">{</span>
-        <span class="na">syncValue</span> <span class="o">=</span> <span class="s">1;</span>
-<span class="s">    }</span>
-<span class="na">}</span>
+<span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnPlayerLeft</span><span class="p">(</span><span class="n">VRCPlayerApi</span> <span class="n">player</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Networking</span><span class="p">.</span><span class="n">IsOwner</span><span class="p">(</span><span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span><span class="p">,</span> <span class="n">gameObject</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">syncValue</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1349,72 +1349,72 @@ OwnerShipの移行は行わないため、常にインスタンスのMasterがOw
 55
 56
 57
-58</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">UnityEngine</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">UdonSharp</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">VRC</span><span class="p">.</span><span class="n">Udon</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">VRC</span><span class="p">.</span><span class="n">SDKBase</span><span class="p">;</span>
+58</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UdonSharp</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">VRC.Udon</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">VRC.SDKBase</span><span class="p">;</span>
 
-<span class="k">public</span> <span class="k">class</span> <span class="n">NewBehaviourScript</span> <span class="p">:</span> <span class="n">UdonSharpBehaviour</span>
-<span class="err">{</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">NewBehaviourScript</span> <span class="p">:</span> <span class="n">UdonSharpBehaviour</span>
+<span class="p">{</span>
     <span class="k">public</span> <span class="n">GameObject</span> <span class="n">mirror</span><span class="p">;</span>
 
-    <span class="p">[</span><span class="n">UdonSynced</span><span class="p">(</span><span class="n">UdonSyncMode</span><span class="p">.</span><span class="k">None</span><span class="p">)]</span>
-    <span class="n">private</span> <span class="n">bool</span> <span class="n">mirrorEnable</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="na">    [UdonSynced(UdonSyncMode.None)]</span>
+    <span class="k">private</span> <span class="kt">bool</span> <span class="n">mirrorEnable</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
 
-    <span class="o">//</span> <span class="k">Start</span> <span class="k">is</span> <span class="k">called</span> <span class="k">before</span> <span class="n">the</span> <span class="k">first</span> <span class="n">frame</span> <span class="k">update</span>
-    <span class="n">void</span> <span class="k">Start</span><span class="p">()</span>
-    <span class="err">{</span>
+    <span class="c1">// Start is called before the first frame update</span>
+    <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
         <span class="n">mirror</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="n">mirrorEnable</span><span class="p">);</span>
-    <span class="err">}</span>
+    <span class="p">}</span>
 
-    <span class="k">public</span> <span class="n">override</span> <span class="n">void</span> <span class="n">OnPlayerJoined</span><span class="p">(</span><span class="n">VRCPlayerApi</span> <span class="n">player</span><span class="p">)</span>
-    <span class="err">{</span>
-        <span class="o">//</span> <span class="n">Joinしたプレイヤーの同期</span>
-        <span class="o">//</span> <span class="mi">2</span><span class="err">番目以降に入ってきたプレイヤーは</span><span class="k">Start</span><span class="p">()</span><span class="err">が動かないのでこれで値を同期する。</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span> <span class="o">==</span> <span class="n">player</span><span class="p">)</span>
-        <span class="err">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnPlayerJoined</span><span class="p">(</span><span class="n">VRCPlayerApi</span> <span class="n">player</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Joinしたプレイヤーの同期</span>
+        <span class="c1">// 2番目以降に入ってきたプレイヤーはStart()が動かないのでこれで値を同期する。</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span> <span class="p">==</span> <span class="n">player</span><span class="p">)</span>
+        <span class="p">{</span>
             <span class="n">mirror</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="n">mirrorEnable</span><span class="p">);</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
-    <span class="o">//</span> <span class="k">Update</span> <span class="k">is</span> <span class="k">called</span> <span class="n">once</span> <span class="n">per</span> <span class="n">frame</span>
-    <span class="n">void</span> <span class="k">Update</span><span class="p">()</span>
-    <span class="err">{</span>
-    <span class="err">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// Update is called once per frame</span>
+    <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
 
-    <span class="k">public</span> <span class="n">override</span> <span class="n">void</span> <span class="n">Interact</span><span class="p">()</span>
-    <span class="err">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">mirrorEnable</span><span class="p">)</span>
-        <span class="err">{</span>
-            <span class="o">//</span> <span class="err">ユーザー全体にイベントを通知</span>
-            <span class="n">SendCustomNetworkEvent</span><span class="p">(</span><span class="n">VRC</span><span class="p">.</span><span class="n">Udon</span><span class="p">.</span><span class="n">Common</span><span class="p">.</span><span class="n">Interfaces</span><span class="p">.</span><span class="n">NetworkEventTarget</span><span class="p">.</span><span class="k">All</span><span class="p">,</span> <span class="ss">&quot;SetMirrorActive&quot;</span><span class="p">);</span>
-        <span class="err">}</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Interact</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">mirrorEnable</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// ユーザー全体にイベントを通知</span>
+            <span class="n">SendCustomNetworkEvent</span><span class="p">(</span><span class="n">VRC</span><span class="p">.</span><span class="n">Udon</span><span class="p">.</span><span class="n">Common</span><span class="p">.</span><span class="n">Interfaces</span><span class="p">.</span><span class="n">NetworkEventTarget</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="s">&quot;SetMirrorActive&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
         <span class="k">else</span>
-        <span class="err">{</span>
-            <span class="o">//</span> <span class="err">ユーザー全体にイベントを通知</span>
-            <span class="n">SendCustomNetworkEvent</span><span class="p">(</span><span class="n">VRC</span><span class="p">.</span><span class="n">Udon</span><span class="p">.</span><span class="n">Common</span><span class="p">.</span><span class="n">Interfaces</span><span class="p">.</span><span class="n">NetworkEventTarget</span><span class="p">.</span><span class="k">All</span><span class="p">,</span> <span class="ss">&quot;SetMirrorInactive&quot;</span><span class="p">);</span>
-        <span class="err">}</span>
-    <span class="err">}</span>
+        <span class="p">{</span>
+            <span class="c1">// ユーザー全体にイベントを通知</span>
+            <span class="n">SendCustomNetworkEvent</span><span class="p">(</span><span class="n">VRC</span><span class="p">.</span><span class="n">Udon</span><span class="p">.</span><span class="n">Common</span><span class="p">.</span><span class="n">Interfaces</span><span class="p">.</span><span class="n">NetworkEventTarget</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="s">&quot;SetMirrorInactive&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    <span class="k">public</span> <span class="n">void</span> <span class="n">SetMirrorActive</span><span class="p">()</span>
-    <span class="err">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">SetMirrorActive</span><span class="p">()</span>
+    <span class="p">{</span>
         <span class="n">mirror</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
-        <span class="n">mirrorEnable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="o">//</span> <span class="err">ココはオーナーのみ動く</span>
-    <span class="err">}</span>
+        <span class="n">mirrorEnable</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// ココはオーナーのみ動く</span>
+    <span class="p">}</span>
 
-    <span class="k">public</span> <span class="n">void</span> <span class="n">SetMirrorInactive</span><span class="p">()</span>
-    <span class="err">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">SetMirrorInactive</span><span class="p">()</span>
+    <span class="p">{</span>
         <span class="n">mirror</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
-        <span class="n">mirrorEnable</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>　<span class="o">//</span> <span class="err">ココはオーナーのみ動く</span>
-    <span class="err">}</span>
-<span class="err">}</span>
+        <span class="n">mirrorEnable</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>　<span class="c1">// ココはオーナーのみ動く</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="_10">変数の同期</h3>
 <p>UdonSharpで変数の同期設定はアトリビュートでできる。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">[UdonSynced(UdonSyncMode.None)]</span>
-<span class="na">public float syncFloatValue</span> <span class="o">=</span> <span class="s">0.0f;</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="na">[UdonSynced(UdonSyncMode.None)]</span>
+<span class="k">public</span> <span class="kt">float</span> <span class="n">syncFloatValue</span> <span class="p">=</span> <span class="m">0.0f</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
 
@@ -1456,14 +1456,16 @@ OwnerShipの移行は行わないため、常にインスタンスのMasterがOw
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">public override void Interact()</span>
-<span class="err">{</span>
-<span class="err">    SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, &quot;ExampleMethod&quot;);</span>
-<span class="err">}</span>
-<span class="err">public void ExampleMethod()</span>
-<span class="err">{</span>
-<span class="err">    Debug.Log(&quot;test&quot;);</span>
-<span class="err">}</span>
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Interact</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">SendCustomNetworkEvent</span><span class="p">(</span><span class="n">VRC</span><span class="p">.</span><span class="n">Udon</span><span class="p">.</span><span class="n">Common</span><span class="p">.</span><span class="n">Interfaces</span><span class="p">.</span><span class="n">NetworkEventTarget</span><span class="p">.</span><span class="n">All</span><span class="p">,</span> <span class="s">&quot;ExampleMethod&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ExampleMethod</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -1492,27 +1494,29 @@ OwnerShipの移行は行わないため、常にインスタンスのMasterがOw
 18
 19
 20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">UdonSharp</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">UnityEngine</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">VRC</span><span class="p">.</span><span class="n">SDKBase</span><span class="p">;</span>
-<span class="k">using</span> <span class="n">VRC</span><span class="p">.</span><span class="n">Udon</span><span class="p">;</span>
+21
+22</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">using</span> <span class="nn">UdonSharp</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">VRC.SDKBase</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">VRC.Udon</span><span class="p">;</span>
 
-<span class="k">public</span> <span class="k">class</span> <span class="n">WorldSettings</span> <span class="p">:</span> <span class="n">UdonSharpBehaviour</span>
-<span class="err">{</span>
-    <span class="k">public</span> <span class="nb">float</span> <span class="n">jump</span><span class="p">;</span> <span class="o">//</span> <span class="err">ジャンプの高さ</span>
-    <span class="k">public</span> <span class="nb">float</span> <span class="n">walk</span><span class="p">;</span> <span class="o">//</span> <span class="err">歩く速度</span>
-    <span class="k">public</span> <span class="nb">float</span> <span class="n">gravity</span><span class="p">;</span> <span class="o">//</span> <span class="err">重力</span>
-    <span class="n">void</span> <span class="k">Start</span><span class="p">()</span>
-    <span class="err">{</span>
-        <span class="n">VRCPlayerApi</span> <span class="n">localPlayer</span> <span class="o">=</span> <span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span><span class="p">;</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">WorldSettings</span> <span class="p">:</span> <span class="n">UdonSharpBehaviour</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">jump</span><span class="p">;</span> <span class="c1">// ジャンプの高さ</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">walk</span><span class="p">;</span> <span class="c1">// 歩く速度</span>
+    <span class="k">public</span> <span class="kt">float</span> <span class="n">gravity</span><span class="p">;</span> <span class="c1">// 重力</span>
+    <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">VRCPlayerApi</span> <span class="n">localPlayer</span> <span class="p">=</span> <span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span><span class="p">;</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">localPlayer</span> <span class="o">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> <span class="o">//</span> <span class="err">エディターで動かすとプレイヤーがいないため</span><span class="n">NULLチェックしておく</span><span class="err">。</span>
+        <span class="c1">// エディターで動かすとプレイヤーがいないためnullチェックしておく。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">localPlayer</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> 
 
         <span class="n">localPlayer</span><span class="p">.</span><span class="n">SetJumpImpulse</span><span class="p">(</span><span class="n">jump</span><span class="p">);</span>
         <span class="n">localPlayer</span><span class="p">.</span><span class="n">SetWalkSpeed</span><span class="p">(</span><span class="n">walk</span><span class="p">);</span>
         <span class="n">localPlayer</span><span class="p">.</span><span class="n">SetGravityStrength</span><span class="p">(</span><span class="n">gravity</span><span class="p">);</span>
-    <span class="err">}</span>
-<span class="err">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
