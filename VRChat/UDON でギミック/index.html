@@ -1344,8 +1344,8 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 5 : user2  </p>
 </blockquote>
 <h2 id="ondeserialization">OnDeserialization(未検証)</h2>
-<p>Masterから synced variableの更新値が届いた時に発生する
-OnPreSerializationはマスター側で送り出す前に発生するのが OnPreSerialization</p>
+<p>ObjectOwnerから synced variableの更新値が届いた時に発生する
+OnPreSerializationはObjectOwnerで送り出す前に発生するのが OnPreSerialization</p>
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">同期回りを突っついている人が多そうなので：<br>OnDeserialization はマスターから synced variable の更新値が届いた時に発生します。ただし、どの変数が変わったのかは分かりません。対となる、マスター側で送り出す前に発生するのが OnPreSerialization です。</p>&mdash; naqtn(なくとん) (@naqtn) <a href="https://twitter.com/naqtn/status/1247102639227064320?ref_src=twsrc%5Etfw">April 6, 2020</a></blockquote>
 
 <p><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
