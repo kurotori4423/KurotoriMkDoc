@@ -1255,7 +1255,7 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 <h3 id="ownership">OwnerShip（オーナーシップ）</h3>
 <p>オブジェクト一つ一つに設定されている、オブジェクトの同期を行う権限のこと。</p>
 <h3 id="objectowner">ObjectOwner（オブジェクトオーナー）</h3>
-<p>OwnerShipを持っているプレイヤーについての用語がInstanceを立てた人のことであるOwnerと混同しやすいため、このサイトでは「そのオブジェクトのOwnerShipを持っているプレイヤー」のことをObjectOwnerと呼ぶことにする。（筆者の造語なので注意。 ~~正しい言い方があったらTwitterで教えて・・・~~ （2020/04/09追記　Object Ownerと名付けました。））</p>
+<p>OwnerShipを持っているプレイヤーについての用語がInstanceを立てた人のことであるOwnerと混同しやすいため、このサイトでは「そのオブジェクトのOwnerShipを持っているプレイヤー」のことをObjectOwnerと呼ぶことにする。（筆者の造語なので注意。 <del>正しい言い方があったらTwitterで教えて・・・</del> （2020/04/09追記　Object Ownerと名付けました。））</p>
 <h3 id="_4">同期変数</h3>
 <p>UdonSharpでは以下のように、UdonSynced属性がついた変数のことをいう。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -1277,7 +1277,9 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 
 <h3 id="_6">インタラクト時のヒント表示を変更する</h3>
 <p>InspectorをDebug表示にするとUdonBehaviourでInteract Textから変更できる。</p>
-<p><a href="https://twitter.com/aivrc/status/1246687247304282117?s=20">https://twitter.com/aivrc/status/1246687247304282117?s=20</a></p>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">現状、UDONのInteractするときのTextはDebugモードから変更できそう <a href="https://t.co/TrxJFzOyoD">pic.twitter.com/TrxJFzOyoD</a></p>&mdash; ureishi (@aivrc) <a href="https://twitter.com/aivrc/status/1246687247304282117?ref_src=twsrc%5Etfw">April 5, 2020</a></blockquote>
+
+<p><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
 <h2 id="setowner">SetOwner</h2>
 <p>インタラクトした人にOwnerShipを渡す関数。
 ただし反映されるのは次のインタラクション時。（近日中に修正されることが予定されている。）</p>
@@ -1344,7 +1346,9 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 <h2 id="ondeserialization">OnDeserialization(未検証)</h2>
 <p>Masterから synced variableの更新値が届いた時に発生する
 OnPreSerializationはマスター側で送り出す前に発生するのが OnPreSerialization</p>
-<p><a href="https://twitter.com/naqtn/status/1247102639227064320?s=20">https://twitter.com/naqtn/status/1247102639227064320?s=20</a></p>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">同期回りを突っついている人が多そうなので：<br>OnDeserialization はマスターから synced variable の更新値が届いた時に発生します。ただし、どの変数が変わったのかは分かりません。対となる、マスター側で送り出す前に発生するのが OnPreSerialization です。</p>&mdash; naqtn(なくとん) (@naqtn) <a href="https://twitter.com/naqtn/status/1247102639227064320?ref_src=twsrc%5Etfw">April 6, 2020</a></blockquote>
+
+<p><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
 <h2 id="_7">同期周りで陥りがちな問題・バグ</h2>
 <h3 id="onplayerleft">OnPlayerLeft時に同期変数が更新されない</h3>
 <p>OnPlayerLeftのタイミングで以下のように同期変数を修正する場合、このオブジェクトのObjectOwnerがワールドから移動する場合は値が更新されない。</p>
@@ -1375,7 +1379,9 @@ OnPreSerializationはマスター側で送り出す前に発生するのが OnPr
 少なくとも、OwnerShip移動と同期変数の更新は同タイミングで行わないほうがいい。</p>
 <h3 id="synchronize-position">Synchronize Position がオンだと同期変数が同期しない</h3>
 <p>同期変数があるプログラムを <code>Synchronize Position</code> をオンにしているUdonBehaviourにセットした場合、ObjectOwner以外のプレイヤーでは同期変数が同期されなくなる。</p>
-<p><a href="https://twitter.com/naqtn/status/1247135724001873920?s=20">https://twitter.com/naqtn/status/1247135724001873920?s=20</a></p>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">あと、同期ではまりそうなの： <a href="https://t.co/ByrtYT8pKy">https://t.co/ByrtYT8pKy</a> variable を synced にしているプログラムを Synchronize Position を on にしている UdonBehaviour で動かすと、owner ではない人の所で variable の同期が止まる現象があります。</p>&mdash; naqtn(なくとん) (@naqtn) <a href="https://twitter.com/naqtn/status/1247135724001873920?ref_src=twsrc%5Etfw">April 6, 2020</a></blockquote>
+
+<p><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
 <h2 id="_8">コンパイルが走らないとき</h2>
 <p>Udon C# Program Assetで<code>Source Script</code>がセットされていない物があると以下のようなエラーが出てすべてのファイルのコンパイルが走らなくなる。
 シーンで使っていなくても走らなくなるので削除する。</p>
@@ -1482,13 +1488,13 @@ OnPreSerializationはマスター側で送り出す前に発生するのが OnPr
     <span class="kt">string</span><span class="p">[]</span> <span class="n">strs</span> <span class="p">=</span> <span class="n">ListString</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">);</span>
 
     <span class="kt">string</span> <span class="n">newList</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">isExist</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">exists</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
 
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">strs</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="p">++</span><span class="n">i</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">if</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="n">strs</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
         <span class="p">{</span>
-            <span class="n">isExist</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="n">exists</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">else</span>
         <span class="p">{</span>
@@ -1497,7 +1503,7 @@ OnPreSerializationはマスター側で送り出す前に発生するのが OnPr
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="n">ListString</span> <span class="p">=</span> <span class="n">newList</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">isExist</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">exists</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// リストサイズを取得</span>
