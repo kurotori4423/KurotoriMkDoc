@@ -510,6 +510,42 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-5" type="checkbox" id="nav-10-5">
+    
+    <label class="md-nav__link" for="nav-10-5">
+      UDON
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-5">
+        UDON
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../VRChat/UDON/Udon_SimpleSwitch/" title="シンプルスイッチ" class="md-nav__link">
+      シンプルスイッチ
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -626,6 +662,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#stats" class="md-nav__link">
+    Stats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ウィンドウのサイズが変わった時の描画エリアのサイズ更新
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glsl" class="md-nav__link">
+    GLSL
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inverse-transpose" class="md-nav__link">
+    inverse, transposeがないっぽい？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    走り書き
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#effectcomposer" class="md-nav__link">
+    EffectComposerの使い方
+  </a>
+  
+</li>
+      
       
       
       
@@ -691,8 +775,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../勉強/math/" title="Math" class="md-nav__link">
-      Math
+    <a href="../../勉強/math/" title="行列基礎" class="md-nav__link">
+      行列基礎
     </a>
   </li>
 
@@ -765,6 +849,54 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stats" class="md-nav__link">
+    Stats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ウィンドウのサイズが変わった時の描画エリアのサイズ更新
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glsl" class="md-nav__link">
+    GLSL
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inverse-transpose" class="md-nav__link">
+    inverse, transposeがないっぽい？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    走り書き
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#effectcomposer" class="md-nav__link">
+    EffectComposerの使い方
+  </a>
   
 </li>
       
@@ -848,13 +980,152 @@
 <h2 id="gui">GUIを使う</h2>
 <h3 id="datgui">dat.gui</h3>
 <p>Three.jsのexampleでよく使われている機能。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nx">gui</span> <span class="o">=</span>
+<p>インポート</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">GUI</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;dat.gui.module.js&#39;</span><span class="p">;</span>
 </pre></div>
 </td></tr></table>
 
+<p>初期化</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">guiData</span> <span class="o">=</span><span class="p">{</span>
+    <span class="nx">ValueInt</span> <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">Valuefloat</span><span class="o">:</span> <span class="mf">0.2</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">gui</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GUI</span><span class="p">({</span><span class="nx">width</span><span class="o">:</span> <span class="mi">350</span><span class="p">});</span>
+
+<span class="nx">gui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">guiData</span><span class="p">,</span> <span class="s1">&#39;ValueInt&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">name</span><span class="p">(</span><span class="s2">&quot;整数値&quot;</span><span class="p">)</span> <span class="c1">// ラベル</span>
+    <span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>         <span class="c1">// 最小値 </span>
+    <span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>        <span class="c1">// 最大値</span>
+    <span class="p">.</span><span class="nx">step</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        <span class="c1">// ステップ数（整数値なら1にすればOK）</span>
+    <span class="p">.</span><span class="nx">onChange</span><span class="p">(</span><span class="nx">onChangeIntValue</span><span class="p">);</span> <span class="c1">// 値が変わった時に呼ばれるコールバック関数</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="stats">Stats</h2>
+<p>three.jsのlibsに入っているFPSカウンター。</p>
+<p>インポート</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kr">import</span> <span class="nx">Stats</span> <span class="nx">from</span> <span class="s1">&#39;./js/libs/stats.module.js&#39;</span><span class="p">;</span> <span class="c1">// パスは任意</span>
+</pre></div>
+</td></tr></table>
+
+<p>初期化と表示</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// コンテナ作成Bodyに追加</span>
+<span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">container</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">stats</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Stats</span><span class="p">();</span>
+<span class="nx">container</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">stats</span><span class="p">.</span><span class="nx">dom</span><span class="p">);</span>
+
+<span class="c1">// アップデート処理</span>
+<span class="nx">stats</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="_3">ウィンドウのサイズが変わった時の描画エリアのサイズ更新</h2>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="nx">onWindowResize</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">onWindowResize</span><span class="p">(){</span>
+    <span class="nx">renderer</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">);</span>
+    <span class="nx">camera</span><span class="p">.</span><span class="nx">aspect</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span><span class="o">/</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">;</span>
+    <span class="nx">camera</span><span class="p">.</span><span class="nx">updateProjectionMatrix</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="glsl">GLSL</h2>
+<h3 id="inverse-transpose">inverse, transposeがないっぽい？</h3>
+<p>three.jsのサンプルでも使っておらず、inverseは自分で定義していた。自分で作らないといけない。</p>
+<h2 id="_4">走り書き</h2>
 <p>setRenderTarget　レンダリング先のFBOを設定できる</p>
 <p>renderer.render(scene, camera) 指定のシーンを指定のカメラでレンダリング</p>
 <p>renderer.clear() 通常のバッファをクリアしている。カラーバッファ、デプスバッファ、ステンシル</p>
+<h2 id="effectcomposer">EffectComposerの使い方</h2>
+<p>ポストプロセスエフェクトを掛けるときなど、マルチパスでレンダリングを行いたいときに使用できるExampleに入っているライブラリ。
+three.jsで後処理効果を実装するために使用されます。このクラスは、一連のポストプロセッシングパスを管理して、最終的な視覚結果を生成します。後処理パスは、追加/挿入の順に実行されます。最後のパスは自動的に画面にレンダリングされます。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// EffectComposerのインポート</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">EffectComposer</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./jsm/postprocessing/EffectComposer.js&#39;</span>
+
+<span class="c1">// Passの追加</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">RenderPass</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./jsm/postprocessing/RenderPass.js&#39;</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
+<p>描画先のレンダーターゲットと、レンダラーをセットする</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nx">parameters</span> <span class="o">=</span> 
+<span class="p">{</span>
+    <span class="nx">minFilter</span><span class="o">:</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">LinearFilter</span><span class="p">,</span>
+    <span class="nx">magFilter</span><span class="o">:</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">LinearFilter</span><span class="p">,</span>
+    <span class="nx">format</span><span class="o">:</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">RGBAFormat</span><span class="p">,</span>
+    <span class="nx">stencilBuffer</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">};</span>
+
+<span class="c1">// レンダーターゲットの設定</span>
+<span class="kd">var</span> <span class="nx">renderTarget</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">WebGLRenderTarget</span><span class="p">(</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerWidth</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">,</span> <span class="nx">parameters</span><span class="p">);</span>
+
+<span class="nx">effectComposer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EffectComposer</span><span class="p">(</span><span class="nx">renderer</span><span class="p">,</span> <span class="nx">renderTarget</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">scenePass</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RenderPass</span><span class="p">(</span> <span class="nx">scene</span><span class="p">,</span> <span class="nx">camera</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">);</span>
+<span class="nx">scenePass</span><span class="p">.</span><span class="nx">clear</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">delta</span> <span class="o">=</span> <span class="nx">clock</span><span class="p">.</span><span class="nx">getDelta</span><span class="p">();</span>
+
+<span class="c1">// エフェクトコンポーザーのレンダリング</span>
+<span class="nx">effectComposer</span><span class="p">.</span><span class="nx">addPass</span><span class="p">(</span><span class="nx">delta</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>RenderPass, </p>
+<p>EffectComposerにPassを追加してレンダリングする。</p>
                 
                   
                 
@@ -946,6 +1217,8 @@
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

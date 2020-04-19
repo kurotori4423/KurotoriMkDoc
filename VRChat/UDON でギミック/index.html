@@ -706,6 +706,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#disable-station-exitvrc_station" class="md-nav__link">
+    「Disable Station Exit」のついたVRC_Stationからプレイヤーをおろす方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     （作例）同期スイッチ
   </a>
@@ -932,6 +939,42 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10-5" type="checkbox" id="nav-10-5">
+    
+    <label class="md-nav__link" for="nav-10-5">
+      UDON
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-10-5">
+        UDON
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../UDON/Udon_SimpleSwitch/" title="シンプルスイッチ" class="md-nav__link">
+      シンプルスイッチ
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1046,8 +1089,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../勉強/math/" title="Math" class="md-nav__link">
-      Math
+    <a href="../../勉強/math/" title="行列基礎" class="md-nav__link">
+      行列基礎
     </a>
   </li>
 
@@ -1282,6 +1325,13 @@
         <li class="md-nav__item">
   <a href="#string" class="md-nav__link">
     Stringを使った同期リスト
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disable-station-exitvrc_station" class="md-nav__link">
+    「Disable Station Exit」のついたVRC_Stationからプレイヤーをおろす方法
   </a>
   
 </li>
@@ -1779,6 +1829,20 @@ Udon環境ではPlayerIDが取れるようになったため、ワールド内�
 </pre></div>
 </td></tr></table>
 
+<h2 id="disable-station-exitvrc_station">「Disable Station Exit」のついたVRC_Stationからプレイヤーをおろす方法</h2>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="n">VRCStation</span> <span class="n">station</span><span class="p">;</span> <span class="c1">// VRCStationの変数を用意</span>
+
+<span class="n">station</span><span class="p">.</span><span class="n">ExitStation</span><span class="p">(</span><span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>実はテレポートでもおろせる。（最初の方法に気づかず最近までこちらの方法を取っていたのは内緒）</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Networking</span><span class="p">.</span><span class="n">LocalPlayer</span><span class="p">.</span><span class="n">TeleportTo</span><span class="p">(</span><span class="n">exitPoint</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span> <span class="n">exitPoint</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
 <h2 id="_9">（作例）同期スイッチ</h2>
 <p>オブジェクトのアクティブ、非アクティブを同期的に切り替えるUdon。
 OwnerShipの移行は行わないため、常にインスタンスのMasterがOwnerShipを持つ。
@@ -2170,6 +2234,8 @@ OwnerShipの移行は行わないため、常にインスタンスのMasterがOw
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="../../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>
