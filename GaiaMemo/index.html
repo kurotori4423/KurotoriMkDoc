@@ -13,7 +13,7 @@
         <meta name="description" content="備忘録的に技術的なメモを残します。">
       
       
-        <link rel="canonical" href="https://kurotori4423.github.io/KurotoriMkDoc/three.js/Three.js レンズフレア解説/">
+        <link rel="canonical" href="https://kurotori4423.github.io/KurotoriMkDoc/GaiaMemo/">
       
       
         <meta name="author" content="黒鳥">
@@ -37,21 +37,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.1">
     
     
       
-        <title>Three.js レンズフレア解説 - 黒鳥のメモ</title>
+        <title>Gaiaの使い方 - 黒鳥のメモ</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
@@ -60,14 +60,14 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjp.css">
     
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:600,800">
     
-      <link rel="stylesheet" href="../../css/custom.css">
+      <link rel="stylesheet" href="../css/custom.css">
     
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     
@@ -114,7 +114,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#threejs" tabindex="1" class="md-skip">
+      <a href="#gaia" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -140,7 +140,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Three.js レンズフレア解説
+                Gaiaの使い方
               
             </span>
           
@@ -209,7 +209,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="黒鳥のメモ" class="md-nav__link">
+    <a href=".." title="黒鳥のメモ" class="md-nav__link">
       黒鳥のメモ
     </a>
   </li>
@@ -219,11 +219,49 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../GaiaMemo/" title="Gaiaの使い方" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Gaiaの使い方
+      </label>
+    
+    <a href="./" title="Gaiaの使い方" class="md-nav__link md-nav__link--active">
       Gaiaの使い方
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    セットアップ
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -233,7 +271,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../GoogleDriveDirectLink/" title="Google Drive上のファイルに直接アクセスする。" class="md-nav__link">
+    <a href="../GoogleDriveDirectLink/" title="Google Drive上のファイルに直接アクセスする。" class="md-nav__link">
       Google Drive上のファイルに直接アクセスする。
     </a>
   </li>
@@ -245,7 +283,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../PythonToolCreation/" title="Pythonツール制作" class="md-nav__link">
+    <a href="../PythonToolCreation/" title="Pythonツール制作" class="md-nav__link">
       Pythonツール制作
     </a>
   </li>
@@ -257,7 +295,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Zbrush/" title="ZBrush" class="md-nav__link">
+    <a href="../Zbrush/" title="ZBrush" class="md-nav__link">
       ZBrush
     </a>
   </li>
@@ -269,7 +307,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../umekomi/" title="JavaScript埋め込み共有系サービス比較" class="md-nav__link">
+    <a href="../umekomi/" title="JavaScript埋め込み共有系サービス比較" class="md-nav__link">
       JavaScript埋め込み共有系サービス比較
     </a>
   </li>
@@ -281,7 +319,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../小技集/" title="小技集" class="md-nav__link">
+    <a href="../小技集/" title="小技集" class="md-nav__link">
       小技集
     </a>
   </li>
@@ -312,7 +350,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Houdini/cuvatureEdgeDetect/" title="VEXで谷折りエッジを検出しグループ化する" class="md-nav__link">
+    <a href="../Houdini/cuvatureEdgeDetect/" title="VEXで谷折りエッジを検出しグループ化する" class="md-nav__link">
       VEXで谷折りエッジを検出しグループ化する
     </a>
   </li>
@@ -348,7 +386,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Lavender VR/QA/" title="トラブルシューティング" class="md-nav__link">
+    <a href="../Lavender VR/QA/" title="トラブルシューティング" class="md-nav__link">
       トラブルシューティング
     </a>
   </li>
@@ -384,7 +422,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Markdown/Visual Studio Code を Markdown用にカスタムする/" title="Visual Studio Code を Markdown用にカスタムする" class="md-nav__link">
+    <a href="../Markdown/Visual Studio Code を Markdown用にカスタムする/" title="Visual Studio Code を Markdown用にカスタムする" class="md-nav__link">
       Visual Studio Code を Markdown用にカスタムする
     </a>
   </li>
@@ -396,7 +434,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Markdown/ドキュメント化に便利なソフト/" title="ドキュメント作成に便利なソフト" class="md-nav__link">
+    <a href="../Markdown/ドキュメント化に便利なソフト/" title="ドキュメント作成に便利なソフト" class="md-nav__link">
       ドキュメント作成に便利なソフト
     </a>
   </li>
@@ -432,7 +470,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../MkDocs解説/Extension/" title="MkDocs拡張機能" class="md-nav__link">
+    <a href="../MkDocs解説/Extension/" title="MkDocs拡張機能" class="md-nav__link">
       MkDocs拡張機能
     </a>
   </li>
@@ -444,7 +482,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../MkDocs解説/MkDocsセットアップ/" title="MkDocs基本" class="md-nav__link">
+    <a href="../MkDocs解説/MkDocsセットアップ/" title="MkDocs基本" class="md-nav__link">
       MkDocs基本
     </a>
   </li>
@@ -456,7 +494,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../MkDocs解説/カスタマイズ/" title="MkDocsカスタマイズ" class="md-nav__link">
+    <a href="../MkDocs解説/カスタマイズ/" title="MkDocsカスタマイズ" class="md-nav__link">
       MkDocsカスタマイズ
     </a>
   </li>
@@ -492,7 +530,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/KemoCafe2018移行/" title="KemoCafe2018移行" class="md-nav__link">
+    <a href="../VRChat/KemoCafe2018移行/" title="KemoCafe2018移行" class="md-nav__link">
       KemoCafe2018移行
     </a>
   </li>
@@ -504,7 +542,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/MyVirtualLensSetup/" title="Virtual Lens導入手順" class="md-nav__link">
+    <a href="../VRChat/MyVirtualLensSetup/" title="Virtual Lens導入手順" class="md-nav__link">
       Virtual Lens導入手順
     </a>
   </li>
@@ -516,7 +554,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/UDON でギミック/" title="UDONメモ" class="md-nav__link">
+    <a href="../VRChat/UDON でギミック/" title="UDONメモ" class="md-nav__link">
       UDONメモ
     </a>
   </li>
@@ -528,7 +566,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/VRChat小ネタ/" title="デバッグ機能" class="md-nav__link">
+    <a href="../VRChat/VRChat小ネタ/" title="デバッグ機能" class="md-nav__link">
       デバッグ機能
     </a>
   </li>
@@ -540,7 +578,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/WorldCreateTips/" title="ワールド制作でのTips" class="md-nav__link">
+    <a href="../VRChat/WorldCreateTips/" title="ワールド制作でのTips" class="md-nav__link">
       ワールド制作でのTips
     </a>
   </li>
@@ -552,7 +590,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/toUnity2018/" title="Unity2018で各種アセットのインポート方法" class="md-nav__link">
+    <a href="../VRChat/toUnity2018/" title="Unity2018で各種アセットのインポート方法" class="md-nav__link">
       Unity2018で各種アセットのインポート方法
     </a>
   </li>
@@ -583,7 +621,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/UDON/Udon_SimpleSwitch/" title="シンプルスイッチ" class="md-nav__link">
+    <a href="../VRChat/UDON/Udon_SimpleSwitch/" title="シンプルスイッチ" class="md-nav__link">
       シンプルスイッチ
     </a>
   </li>
@@ -603,12 +641,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
     
     <label class="md-nav__link" for="nav-13">
       Three.js
@@ -626,7 +662,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../JavaScriptMemo/" title="JavaScriptメモ" class="md-nav__link">
+    <a href="../three.js/JavaScriptMemo/" title="JavaScriptメモ" class="md-nav__link">
       JavaScriptメモ
     </a>
   </li>
@@ -636,49 +672,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Three.js レンズフレア解説
-      </label>
-    
-    <a href="./" title="Three.js レンズフレア解説" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../three.js/Three.js レンズフレア解説/" title="Three.js レンズフレア解説" class="md-nav__link">
       Three.js レンズフレア解説
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目次</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    オブジェクト遮蔽のチェック
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -688,7 +686,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ThreejsMemo/" title="Three.js メモ" class="md-nav__link">
+    <a href="../three.js/ThreejsMemo/" title="Three.js メモ" class="md-nav__link">
       Three.js メモ
     </a>
   </li>
@@ -700,7 +698,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../threejs_GLSL_外部読み込み/" title="GLSLを別ファイルで読み込む" class="md-nav__link">
+    <a href="../three.js/threejs_GLSL_外部読み込み/" title="GLSLを別ファイルで読み込む" class="md-nav__link">
       GLSLを別ファイルで読み込む
     </a>
   </li>
@@ -712,7 +710,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../threejsことはじめ/" title="three.jsを始める" class="md-nav__link">
+    <a href="../three.js/threejsことはじめ/" title="three.jsを始める" class="md-nav__link">
       three.jsを始める
     </a>
   </li>
@@ -748,7 +746,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../シェーダー/CameraDepth2WorldPos/" title="_CameraDepthTextureとscreenPosからワールド座標を復元する" class="md-nav__link">
+    <a href="../シェーダー/CameraDepth2WorldPos/" title="_CameraDepthTextureとscreenPosからワールド座標を復元する" class="md-nav__link">
       _CameraDepthTextureとscreenPosからワールド座標を復元する
     </a>
   </li>
@@ -784,7 +782,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../勉強/math/" title="行列基礎" class="md-nav__link">
+    <a href="../勉強/math/" title="行列基礎" class="md-nav__link">
       行列基礎
     </a>
   </li>
@@ -796,7 +794,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../勉強/レンズフレア/" title="レンズフレア" class="md-nav__link">
+    <a href="../勉強/レンズフレア/" title="レンズフレア" class="md-nav__link">
       レンズフレア
     </a>
   </li>
@@ -829,7 +827,7 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    オブジェクト遮蔽のチェック
+    セットアップ
   </a>
   
 </li>
@@ -851,9 +849,16 @@
               
                 
                 
-                <h1 id="threejs">Three.js レンズフレア解説</h1>
-<h2 id="_1">オブジェクト遮蔽のチェック</h2>
-<p>Depthテスト付きでライトの位置でピンク色の矩形を描画し、その遮蔽具合で合成率を変更している。</p>
+                <h1 id="gaia">Gaiaの使い方</h1>
+<h2 id="_1">セットアップ</h2>
+<p>AssetStoreからGaiaをインポート</p>
+<p>Window-&gt;Procedual Worlds-&gt;Gaia-&gt; ShowGaia Manager</p>
+<p>「0. Set Linear Defferred」はVRChatでは非対応なので押さない。</p>
+<p>ControllerはどれでもOK。最終的には消すので
+Environmentは Mobile And VRに設定。
+Renderer は BuildInのまま
+Terrain Sizeはお好み</p>
+<p>AdvancedタブからCreate Session Managerを選択</p>
                 
                   
                 
@@ -874,7 +879,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../JavaScriptMemo/" title="JavaScriptメモ" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." title="黒鳥のメモ" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -883,19 +888,19 @@
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                JavaScriptメモ
+                黒鳥のメモ
               </span>
             </div>
           </a>
         
         
-          <a href="../ThreejsMemo/" title="Three.js メモ" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../GoogleDriveDirectLink/" title="Google Drive上のファイルに直接アクセスする。" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
-                Three.js メモ
+                Google Drive上のファイルに直接アクセスする。
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -923,28 +928,28 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.8e03edeb.js"></script>
+      <script src="../assets/javascripts/application.8e03edeb.js"></script>
       
         
         
           
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
               
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
               
               
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
               
             
           
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="../javascripts/extra.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

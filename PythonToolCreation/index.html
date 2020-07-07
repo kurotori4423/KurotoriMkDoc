@@ -13,7 +13,7 @@
         <meta name="description" content="備忘録的に技術的なメモを残します。">
       
       
-        <link rel="canonical" href="https://kurotori4423.github.io/KurotoriMkDoc/three.js/Three.js レンズフレア解説/">
+        <link rel="canonical" href="https://kurotori4423.github.io/KurotoriMkDoc/PythonToolCreation/">
       
       
         <meta name="author" content="黒鳥">
@@ -37,21 +37,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.1">
     
     
       
-        <title>Three.js レンズフレア解説 - 黒鳥のメモ</title>
+        <title>Pythonツール制作 - 黒鳥のメモ</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
@@ -60,14 +60,14 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjp.css">
     
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:600,800">
     
-      <link rel="stylesheet" href="../../css/custom.css">
+      <link rel="stylesheet" href="../css/custom.css">
     
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     
@@ -114,7 +114,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#threejs" tabindex="1" class="md-skip">
+      <a href="#python" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -140,7 +140,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Three.js レンズフレア解説
+                Pythonツール制作
               
             </span>
           
@@ -209,7 +209,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="黒鳥のメモ" class="md-nav__link">
+    <a href=".." title="黒鳥のメモ" class="md-nav__link">
       黒鳥のメモ
     </a>
   </li>
@@ -221,7 +221,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../GaiaMemo/" title="Gaiaの使い方" class="md-nav__link">
+    <a href="../GaiaMemo/" title="Gaiaの使い方" class="md-nav__link">
       Gaiaの使い方
     </a>
   </li>
@@ -233,7 +233,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../GoogleDriveDirectLink/" title="Google Drive上のファイルに直接アクセスする。" class="md-nav__link">
+    <a href="../GoogleDriveDirectLink/" title="Google Drive上のファイルに直接アクセスする。" class="md-nav__link">
       Google Drive上のファイルに直接アクセスする。
     </a>
   </li>
@@ -243,11 +243,129 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../PythonToolCreation/" title="Pythonツール制作" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Pythonツール制作
+      </label>
+    
+    <a href="./" title="Pythonツール制作" class="md-nav__link md-nav__link--active">
       Pythonツール制作
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目次</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pyside2" class="md-nav__link">
+    PySide2セットアップ
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    インストール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    パスを通す
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qtdesignerui" class="md-nav__link">
+    QtDesignerでUIを作る
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uipython" class="md-nav__link">
+    UIファイルをPythonファイルに変換
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exe" class="md-nav__link">
+    EXE化する
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    venv使って仮想環境をつくる
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    パッケージのインストール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyinstaller" class="md-nav__link">
+    pyinstallerは重いしファイルがデカい
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -257,7 +375,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Zbrush/" title="ZBrush" class="md-nav__link">
+    <a href="../Zbrush/" title="ZBrush" class="md-nav__link">
       ZBrush
     </a>
   </li>
@@ -269,7 +387,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../umekomi/" title="JavaScript埋め込み共有系サービス比較" class="md-nav__link">
+    <a href="../umekomi/" title="JavaScript埋め込み共有系サービス比較" class="md-nav__link">
       JavaScript埋め込み共有系サービス比較
     </a>
   </li>
@@ -281,7 +399,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../小技集/" title="小技集" class="md-nav__link">
+    <a href="../小技集/" title="小技集" class="md-nav__link">
       小技集
     </a>
   </li>
@@ -312,7 +430,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Houdini/cuvatureEdgeDetect/" title="VEXで谷折りエッジを検出しグループ化する" class="md-nav__link">
+    <a href="../Houdini/cuvatureEdgeDetect/" title="VEXで谷折りエッジを検出しグループ化する" class="md-nav__link">
       VEXで谷折りエッジを検出しグループ化する
     </a>
   </li>
@@ -348,7 +466,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Lavender VR/QA/" title="トラブルシューティング" class="md-nav__link">
+    <a href="../Lavender VR/QA/" title="トラブルシューティング" class="md-nav__link">
       トラブルシューティング
     </a>
   </li>
@@ -384,7 +502,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Markdown/Visual Studio Code を Markdown用にカスタムする/" title="Visual Studio Code を Markdown用にカスタムする" class="md-nav__link">
+    <a href="../Markdown/Visual Studio Code を Markdown用にカスタムする/" title="Visual Studio Code を Markdown用にカスタムする" class="md-nav__link">
       Visual Studio Code を Markdown用にカスタムする
     </a>
   </li>
@@ -396,7 +514,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../Markdown/ドキュメント化に便利なソフト/" title="ドキュメント作成に便利なソフト" class="md-nav__link">
+    <a href="../Markdown/ドキュメント化に便利なソフト/" title="ドキュメント作成に便利なソフト" class="md-nav__link">
       ドキュメント作成に便利なソフト
     </a>
   </li>
@@ -432,7 +550,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../MkDocs解説/Extension/" title="MkDocs拡張機能" class="md-nav__link">
+    <a href="../MkDocs解説/Extension/" title="MkDocs拡張機能" class="md-nav__link">
       MkDocs拡張機能
     </a>
   </li>
@@ -444,7 +562,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../MkDocs解説/MkDocsセットアップ/" title="MkDocs基本" class="md-nav__link">
+    <a href="../MkDocs解説/MkDocsセットアップ/" title="MkDocs基本" class="md-nav__link">
       MkDocs基本
     </a>
   </li>
@@ -456,7 +574,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../MkDocs解説/カスタマイズ/" title="MkDocsカスタマイズ" class="md-nav__link">
+    <a href="../MkDocs解説/カスタマイズ/" title="MkDocsカスタマイズ" class="md-nav__link">
       MkDocsカスタマイズ
     </a>
   </li>
@@ -492,7 +610,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/KemoCafe2018移行/" title="KemoCafe2018移行" class="md-nav__link">
+    <a href="../VRChat/KemoCafe2018移行/" title="KemoCafe2018移行" class="md-nav__link">
       KemoCafe2018移行
     </a>
   </li>
@@ -504,7 +622,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/MyVirtualLensSetup/" title="Virtual Lens導入手順" class="md-nav__link">
+    <a href="../VRChat/MyVirtualLensSetup/" title="Virtual Lens導入手順" class="md-nav__link">
       Virtual Lens導入手順
     </a>
   </li>
@@ -516,7 +634,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/UDON でギミック/" title="UDONメモ" class="md-nav__link">
+    <a href="../VRChat/UDON でギミック/" title="UDONメモ" class="md-nav__link">
       UDONメモ
     </a>
   </li>
@@ -528,7 +646,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/VRChat小ネタ/" title="デバッグ機能" class="md-nav__link">
+    <a href="../VRChat/VRChat小ネタ/" title="デバッグ機能" class="md-nav__link">
       デバッグ機能
     </a>
   </li>
@@ -540,7 +658,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/WorldCreateTips/" title="ワールド制作でのTips" class="md-nav__link">
+    <a href="../VRChat/WorldCreateTips/" title="ワールド制作でのTips" class="md-nav__link">
       ワールド制作でのTips
     </a>
   </li>
@@ -552,7 +670,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/toUnity2018/" title="Unity2018で各種アセットのインポート方法" class="md-nav__link">
+    <a href="../VRChat/toUnity2018/" title="Unity2018で各種アセットのインポート方法" class="md-nav__link">
       Unity2018で各種アセットのインポート方法
     </a>
   </li>
@@ -583,7 +701,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../VRChat/UDON/Udon_SimpleSwitch/" title="シンプルスイッチ" class="md-nav__link">
+    <a href="../VRChat/UDON/Udon_SimpleSwitch/" title="シンプルスイッチ" class="md-nav__link">
       シンプルスイッチ
     </a>
   </li>
@@ -603,12 +721,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
     
     <label class="md-nav__link" for="nav-13">
       Three.js
@@ -626,7 +742,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../JavaScriptMemo/" title="JavaScriptメモ" class="md-nav__link">
+    <a href="../three.js/JavaScriptMemo/" title="JavaScriptメモ" class="md-nav__link">
       JavaScriptメモ
     </a>
   </li>
@@ -636,49 +752,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Three.js レンズフレア解説
-      </label>
-    
-    <a href="./" title="Three.js レンズフレア解説" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../three.js/Three.js レンズフレア解説/" title="Three.js レンズフレア解説" class="md-nav__link">
       Three.js レンズフレア解説
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目次</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    オブジェクト遮蔽のチェック
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -688,7 +766,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../ThreejsMemo/" title="Three.js メモ" class="md-nav__link">
+    <a href="../three.js/ThreejsMemo/" title="Three.js メモ" class="md-nav__link">
       Three.js メモ
     </a>
   </li>
@@ -700,7 +778,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../threejs_GLSL_外部読み込み/" title="GLSLを別ファイルで読み込む" class="md-nav__link">
+    <a href="../three.js/threejs_GLSL_外部読み込み/" title="GLSLを別ファイルで読み込む" class="md-nav__link">
       GLSLを別ファイルで読み込む
     </a>
   </li>
@@ -712,7 +790,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../threejsことはじめ/" title="three.jsを始める" class="md-nav__link">
+    <a href="../three.js/threejsことはじめ/" title="three.jsを始める" class="md-nav__link">
       three.jsを始める
     </a>
   </li>
@@ -748,7 +826,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../シェーダー/CameraDepth2WorldPos/" title="_CameraDepthTextureとscreenPosからワールド座標を復元する" class="md-nav__link">
+    <a href="../シェーダー/CameraDepth2WorldPos/" title="_CameraDepthTextureとscreenPosからワールド座標を復元する" class="md-nav__link">
       _CameraDepthTextureとscreenPosからワールド座標を復元する
     </a>
   </li>
@@ -784,7 +862,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../勉強/math/" title="行列基礎" class="md-nav__link">
+    <a href="../勉強/math/" title="行列基礎" class="md-nav__link">
       行列基礎
     </a>
   </li>
@@ -796,7 +874,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../勉強/レンズフレア/" title="レンズフレア" class="md-nav__link">
+    <a href="../勉強/レンズフレア/" title="レンズフレア" class="md-nav__link">
       レンズフレア
     </a>
   </li>
@@ -828,9 +906,89 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    オブジェクト遮蔽のチェック
+  <a href="#pyside2" class="md-nav__link">
+    PySide2セットアップ
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    インストール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    パスを通す
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qtdesignerui" class="md-nav__link">
+    QtDesignerでUIを作る
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uipython" class="md-nav__link">
+    UIファイルをPythonファイルに変換
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exe" class="md-nav__link">
+    EXE化する
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    venv使って仮想環境をつくる
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    パッケージのインストール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyinstaller" class="md-nav__link">
+    pyinstallerは重いしファイルがデカい
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -851,9 +1009,87 @@
               
                 
                 
-                <h1 id="threejs">Three.js レンズフレア解説</h1>
-<h2 id="_1">オブジェクト遮蔽のチェック</h2>
-<p>Depthテスト付きでライトの位置でピンク色の矩形を描画し、その遮蔽具合で合成率を変更している。</p>
+                <h1 id="python">Pythonツール制作</h1>
+<h2 id="pyside2">PySide2セットアップ</h2>
+<h3 id="_1">インストール</h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">pip install pyside2</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="_2">パスを通す</h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">C:\Users\ユーザー名\AppData\Local\Programs\Python\Python37\Scripts</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="qtdesignerui">QtDesignerでUIを作る</h2>
+<p>PySide2をインストールすると、<code>USERNAME\AppData\Local\Programs\Python\Python37\Lib\site-packages\PySide2</code>に<code>designer.exe</code>があるのでそれを起動。
+ウィジェットボックスからUIパーツを配置する。オブジェクトインスペクタから名前や属性を編集。</p>
+<p><img alt="" src="../2020-04-21-02-04-44.png" /></p>
+<h3 id="uipython">UIファイルをPythonファイルに変換</h3>
+<p>PySide2ではUIファイルのままでも読み込めるが、後々EXEファイル化するときに1ファイル化できなくなるので、pythonファイルに変換する</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">pyside2-uic.exe XXXXX.ui -o XXXXX.py</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="exe">EXE化する</h2>
+<p>pyinstallerを使用する。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">pip install pyinstaller</span>
+</pre></div>
+</td></tr></table>
+
+<p><code>XXXXXX.py</code> をexe化する。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">pyinstaller XXXXXX.py --onefile --noconsole</span>
+</pre></div>
+</td></tr></table>
+
+<p><code>dist</code>フォルダの中にexeがある。</p>
+<h3 id="venv">venv使って仮想環境をつくる</h3>
+<p>プロジェクトのディレクトリ直下で</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">py -m venv venv</span>
+</pre></div>
+</td></tr></table>
+
+<p>を実行するとプロジェクトファイルにvenvフォルダができる。</p>
+<p>venv環境のアクティベート</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">.\venv\Scripts\activate</span>
+</pre></div>
+</td></tr></table>
+
+<h4 id="_3">パッケージのインストール</h4>
+<p>アクティベート状態でpipを使ってインストールする。</p>
+<h3 id="pyinstaller">pyinstallerは重いしファイルがデカい</h3>
+<p>py2exeをつかう。<del>ただしPython3.4までしか対応していない。</del>
+Python3.5 -3.7まで対応している物がありました。</p>
+<p>今回はpython3.7.1で使うので、Releaseからpy2exe-0.9.3.2-cp37-none-win_amd64.whlをダウンロード</p>
+<p>pipでインストール</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">pip install py2exe-0.9.3.2-cp37-none-win_amd64.whl</span>
+</pre></div>
+</td></tr></table>
+
+<p>py2exeでEXEが作れたが、起動しない。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">PySide2</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="kn">import</span> <span class="nn">shiboken2</span> <span class="nn">from</span> <span class="nn">D</span><span class="p">:</span>\<span class="n">kurotori</span>\<span class="n">Documents</span>\<span class="n">PySideTools</span>\<span class="n">MaterialTextureCombiner</span>\<span class="n">dist</span>\<span class="n">library</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;MaterialTextureCombiner.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;MaterialTextureCombinerUI.pyc&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;PySide2\__init__.pyc&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">88</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;PySide2\__init__.pyc&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">54</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_setupQtDirectories</span>
+  <span class="n">File</span> <span class="s2">&quot;shiboken2\__init__.pyc&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">27</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;loader&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">10</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;loader&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">8</span><span class="p">,</span> <span class="ow">in</span> <span class="n">__load</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="p">(</span><span class="n">DLL</span> <span class="n">load</span> <span class="n">failed</span><span class="p">:</span> <span class="err">指定されたモジュールが見つかりません。</span><span class="p">)</span> <span class="s1">&#39;D:</span><span class="se">\\</span><span class="s1">kurotori</span><span class="se">\\</span><span class="s1">Documents</span><span class="se">\\</span><span class="s1">PySideTools</span><span class="se">\\</span><span class="s1">MaterialTextureCombiner</span><span class="se">\\</span><span class="s1">dist</span><span class="se">\\</span><span class="s1">shiboken2.shiboken2.pyd&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<p>shiboken2がインポート出来ないようだが、解決方法がわからず断念。</p>
                 
                   
                 
@@ -874,7 +1110,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../JavaScriptMemo/" title="JavaScriptメモ" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../GoogleDriveDirectLink/" title="Google Drive上のファイルに直接アクセスする。" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -883,19 +1119,19 @@
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                JavaScriptメモ
+                Google Drive上のファイルに直接アクセスする。
               </span>
             </div>
           </a>
         
         
-          <a href="../ThreejsMemo/" title="Three.js メモ" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Zbrush/" title="ZBrush" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   次
                 </span>
-                Three.js メモ
+                ZBrush
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -923,28 +1159,28 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.8e03edeb.js"></script>
+      <script src="../assets/javascripts/application.8e03edeb.js"></script>
       
         
         
           
-          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
               
-                <script src="../../assets/javascripts/lunr/tinyseg.js"></script>
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
               
               
-                <script src="../../assets/javascripts/lunr/lunr.ja.js"></script>
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
               
             
           
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="../javascripts/extra.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
